@@ -57,8 +57,8 @@
         irq-gpios = <&gpio0 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
         automouse-layer = <5>;
         scroll-layers = <6>;
- 		x-invert; // この行を追記 (左右の動きを反転)
- 		y-invert; // この行を追記 (上下の動きを反転)
+        invert-x-axis = <true>; // この行に変更 (左右の動きを反転)
+        invert-y-axis = <true>; // この行に変更 (上下の動きを反転)
     };
 };
 
