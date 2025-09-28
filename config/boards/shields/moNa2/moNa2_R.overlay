@@ -15,10 +15,10 @@
 };
 
 / {
+    // 変更点: listener の対象を &trackball → &trackball_scaled にする
     trackball_listener {
         compatible = "zmk,input-listener";
-        device = <&trackball>;
-
+        device = <&trackball_scaled>;
     };
 };
 
@@ -58,6 +58,15 @@
         automouse-layer = <5>;
         scroll-layers = <6>;
     };
+
+    // ★追加: トランスフォームノード
+    trackball_scaled: trackball_scaled {
+        compatible = "zmk,sensor-transform";
+        input = <&trackball>;
+        // X=1倍, Y=2倍 に設定
+        scale = <1 2>;
+    };
+
 };
 
-
+　
