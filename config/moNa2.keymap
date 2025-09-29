@@ -50,8 +50,8 @@
             bindings = <
 &kp Q               &kp W         &kp E         &kp R      &kp T                                              &kp Y          &kp U  &lt 5 I    &kp O    &kp P
 &mt LEFT_CONTROL A  &kp S         &kp D         &kp F      &kp G                            &kp LC(UP_ARROW)  &kp H          &kp J  &kp K      &kp L    &kp ENTER
-&mt LEFT_SHIFT Z    &kp X         &kp C         &kp V      &lt 4 B      &lt 1 APOSTROPHE    &kp SLASH         &kp N          &kp M  &kp COMMA  &kp DOT  &kp MINUS
-&kp LCTRL           &kp LEFT_WIN  &kp LEFT_ALT  &mkp LCLK  &lt 2 SPACE  &lt 5 TAB           &lt 3 LA(MINUS)   &kp BACKSPACE                             &kp RS(SLASH)
+&mt LEFT_SHIFT Z    &kp X         &kp C         &kp V      &lt 4 B      &lt 2 APOSTROPHE    &kp SLASH         &kp N          &kp M  &kp COMMA  &kp DOT  &kp MINUS
+&kp LCTRL           &kp LEFT_WIN  &kp LEFT_ALT  &mkp LCLK  &lt 1 SPACE  &lt 5 TAB           &lt 3 LA(MINUS)   &kp BACKSPACE                             &kp RS(SLASH)
             >;
 
             sensor-bindings =
