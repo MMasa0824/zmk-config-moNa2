@@ -1,5 +1,16 @@
-#include <dt-bindings/zmk/matrix_transform.h> // ★ 追加
 #include "moNa2.dtsi"
+
+/ {
+    // ★★★★★ ZMKの標準的なポインティング機能を指定 ★★★★★
+    chosen {
+        zmk,pointing = <&pointing>;
+    };
+};
+
+// ★★★★★ 標準ポインティングビヘイビアを有効化 ★★★★★
+&pointing {
+    status = "okay";
+};
 
 &default_transform {
     col-offset = <6>;
@@ -13,37 +24,6 @@
             , <&xiao_d 7 GPIO_ACTIVE_HIGH> 
             , <&gpio0 10 GPIO_ACTIVE_HIGH>
             ;
-};
-
-/ {
-    // ★★★★★★★★★★★★★★★★★★★★★★★★★★★★
-    // ★ これがエラーを解決する重要な追加部分です ★
-    // ★★★★★★★★★★★★★★★★★★★★★★★★★★★★
-    chosen {
-        // ZMKに対して、最終的なポインティングデバイスとして
-        // trackball_scaled を使用することを宣言します。
-        zmk,pointing = <&trackball_scaled>;
-    };
-
-    // sensor-transform を使うためのリスナー
-    trackball_listener {
-        compatible = "zmk,input-listener";
-        device = <&trackball_scaled>;
-    };
-
-    // 軸ごとの倍率を設定する transform ノード
-    trackball_scaled: trackball_scaled {
-        compatible = "zmk,sensor-transform";
-        input = <&trackball>; // 入力元は trackball センサー
-        
-        // 横方向(X軸)の倍率を 1/1 = 1倍に設定
-        x-scale-numerator = <1>;
-        x-scale-denominator = <1>;
-
-        // 縦方向(Y軸)の倍率を 13/10 = 1.3倍に設定
-        y-scale-numerator = <13>;
-        y-scale-denominator = <10>;
-    };
 };
 
 &pinctrl {
