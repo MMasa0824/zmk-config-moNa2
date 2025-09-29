@@ -1,12 +1,9 @@
 #include "moNa2.dtsi"
 
-/ {
-    // ZMKに対して、標準のポインティング機能を使用するよう指定します。
-    // これだけで、有効になっているセンサー（trackball）を自動的に使ってくれます。
-    chosen {
-        zmk,pointing = <&pointing>;
-    };
-}
+// chosenノードに、標準ポインティング機能を追加で指定します
+&chosen {
+    zmk,pointing = <&pointing>;
+};
 
 &default_transform {
     col-offset = <6>;
