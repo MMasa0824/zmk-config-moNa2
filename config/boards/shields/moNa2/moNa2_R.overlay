@@ -1,16 +1,12 @@
 #include "moNa2.dtsi"
 
 / {
-    // ★★★★★ ZMKの標準的なポインティング機能を指定 ★★★★★
+    // ZMKに対して、標準のポインティング機能を使用するよう指定します。
+    // これだけで、有効になっているセンサー（trackball）を自動的に使ってくれます。
     chosen {
         zmk,pointing = <&pointing>;
     };
-};
-
-// ★★★★★ 標準ポインティングビヘイビアを有効化 ★★★★★
-&pointing {
-    status = "okay";
-};
+}
 
 &default_transform {
     col-offset = <6>;
