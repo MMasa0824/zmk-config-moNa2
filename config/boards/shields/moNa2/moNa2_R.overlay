@@ -1,3 +1,4 @@
+#include <dt-bindings/zmk/matrix_transform.h> // ★ 追加
 #include "moNa2.dtsi"
 
 &default_transform {
@@ -15,13 +16,22 @@
 };
 
 / {
-    // ★ sensor-transform を使うためのリスナーを再度有効化
+    // ★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+    // ★ これがエラーを解決する重要な追加部分です ★
+    // ★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+    chosen {
+        // ZMKに対して、最終的なポインティングデバイスとして
+        // trackball_scaled を使用することを宣言します。
+        zmk,pointing = <&trackball_scaled>;
+    };
+
+    // sensor-transform を使うためのリスナー
     trackball_listener {
         compatible = "zmk,input-listener";
         device = <&trackball_scaled>;
     };
 
-    // ★ 軸ごとの倍率を設定する transform ノード
+    // 軸ごとの倍率を設定する transform ノード
     trackball_scaled: trackball_scaled {
         compatible = "zmk,sensor-transform";
         input = <&trackball>; // 入力元は trackball センサー
@@ -34,19 +44,7 @@
         y-scale-numerator = <13>;
         y-scale-denominator = <10>;
     };
-
-    /* ★削除: 前回追加した chosen と &pointing は不要です
-    chosen {
-        zmk,pointing = &pointing;
-    };
-    */
 };
-
-/* ★削除: &pointing も不要です
-&pointing {
-    scale-factor = <13>;
-};
-*/
 
 &pinctrl {
     spi0_default: spi0_default {
